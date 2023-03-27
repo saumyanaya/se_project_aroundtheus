@@ -45,8 +45,9 @@
   font-size: 18px;
   line-height: 22px;
   font-weight: 400;
-  grid-area: description;
   margin: 0;
+  margin-top: 7px;
+  grid-area: description;
 }
 .profile__image {
   height: 120px;
