@@ -18,8 +18,8 @@ This project is made so all the elements are displayed correctly on popular scre
 **Images**
 This link contains desktop view tablet view and mobile view
 
-![desktop view](.images/demo/desktop.png)
-![tablet view](.images/demo/tablet.png)
-![mobile view](.images/demo/mobile.png)
+![desktop view](./images/demo/desktop_view.png)
+![tablet view](./images/demo/tablet_view.png)
+![mobile view](./images/demo/mobile_view.png)
 
 Had Fun..
