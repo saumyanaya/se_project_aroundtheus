@@ -17,5 +17,6 @@ This project is made so all the elements are displayed correctly on popular scre
 
 **Images**
 This link contains desktop view tablet view and mobile view
-[Link to images](./projects/se_project_aroundtheus/images)
+[alt demo images](.images/demo/image.png)
+
 Had Fun..
