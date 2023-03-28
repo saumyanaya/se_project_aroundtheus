@@ -16,6 +16,6 @@ This project is made so all the elements are displayed correctly on popular scre
 - [Link to my project on browser](https://saumyanaya.github.io/se_project_aroundtheus/index.html)
 
 **Images**
-[Link to compressed images](./projects/se_project_aroundtheus/images)
+[Link to my project final look]()
 
 Had Fun..

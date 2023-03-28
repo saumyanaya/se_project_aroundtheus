@@ -18,7 +18,7 @@
   .page__section {
     margin: 0;
     margin-left: 20px;
-    max-width: calc(100%-40px);
+    max-width: 100%;
   }
 }
 @media screen and (max-width: 480px) {
