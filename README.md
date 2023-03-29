@@ -19,8 +19,5 @@ This project is made so all the elements are displayed correctly on popular scre
 This link contains desktop view.....tablet view......and mobile view
 
 ![desktop view](./images/demo/desktop_view.png)
-![desktop view](./images/demo/desktop_view1.png)
 ![tablet view](./images/demo/tablet_view.png)
-![tablet view](./images/demo/tablet_view1.png)
 ![mobo view](./images/demo/mobo_view.png)
-![mobo view](./images/demo/mobo_view1.png)
