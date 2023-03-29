@@ -31,8 +31,10 @@
   background: transparent url(../images/add.svg) center no-repeat;
   width: 150px;
   height: 50px;
+  border-radius: 2px;
   margin-left: auto;
-  border: 1px solid white;
+  box-sizing: border-box;
+  border: 2px solid white;
 }
 .profile__add-button:hover {
   opacity: 0.6;
@@ -40,6 +42,7 @@
 }
 .profile__title {
   font-size: 42px;
+  font-family: "Inter", Arial, sans-serif;
   line-height: 48px;
   font-weight: 500;
   grid-area: title;
@@ -49,6 +52,7 @@
   overflow: hidden;
 }
 .profile__description {
+  font-family: "Inter", Arial, sans-serif;
   font-size: 18px;
   line-height: 22px;
   font-weight: 400;
@@ -98,7 +102,7 @@
   .profile__add-button {
     margin: 0;
     width: 100%;
-    width: 282px;
+    max-width: 282px;
     height: 50px;
   }
   .profile__edit-button {

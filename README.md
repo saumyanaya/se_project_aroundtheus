@@ -16,10 +16,11 @@ This project is made so all the elements are displayed correctly on popular scre
 - [Link to the project on Github](https://saumyanaya.github.io/se_project_aroundtheus/index.html)
 
 **Images**
-This link contains desktop view tablet view and mobile view
+This link contains desktop view.....tablet view......and mobile view
 
 ![desktop view](./images/demo/desktop_view.png)
+![desktop view](./images/demo/desktop_view1.png)
 ![tablet view](./images/demo/tablet_view.png)
-![mobile view](./images/demo/mobile_view.png)
-
-Had Fun..
+![tablet view](./images/demo/tablet_view1.png)
+![mobo view](./images/demo/mobo_view.png)
+![mobo view](./images/demo/mobo_view1.png)
