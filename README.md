@@ -22,5 +22,6 @@ This project is made so all the elements are displayed correctly on popular scre
 **Images**
 This link contains desktop view.....tablet view......and mobile view
 
-![desktop image](./demo/desktop_image.png)
-![mobo image](./demo/mobo_image.png)
+![desktop image](./demo/desktop__image.png)
+![tablet image](./demo/tablet__image.png)
+![mobo image](./demo/mobo__image.png)
