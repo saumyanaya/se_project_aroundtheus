@@ -24,4 +24,3 @@ This link contains desktop view.....tablet view......and mobile view
 
 ![desktop image](./demo/desktop_image.png)
 ![mobo image](./demo/mobo_image.png)
-![tablet image](./demo/tablet_image.png)
