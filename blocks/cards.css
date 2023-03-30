@@ -17,7 +17,7 @@
 }
 
 @media screen and (max-width: 480px) {
-  cards__list {
+  .cards__list {
     padding: 15px 0px 18px;
     grid-gap: 20px 19px;
   }
