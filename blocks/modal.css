@@ -1,0 +1,94 @@
+.modal {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.modal__container {
+  position: relative;
+  width: 430px;
+  left: 425px;
+  top: 195px;
+  background: #ffffff;
+  border-radius: 10px;
+}
+.modal__heading {
+  font-family: Inter, Arial, sans-serif;
+  padding: 0;
+  padding-top: 34px;
+  width: 330px;
+  padding-left: 36px;
+  color: #000000;
+  margin-bottom: 54px;
+}
+.modal__form {
+  position: relative;
+  padding: 0;
+  border: 0;
+  margin: 0;
+  width: 358px;
+  padding-left: 36px;
+}
+.modal__input {
+  font-family: Inter, Arial, sans-serif;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid black;
+  font-style: normal;
+  width: 100%;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  margin-top: 30px;
+  padding-bottom: 13px;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.modal__button {
+  border: 0;
+  background-color: black;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  border-radius: 2px;
+  margin-top: 48px;
+  margin-bottom: 37px;
+  padding-bottom: 18px;
+  padding-top: 14px;
+  font-family: "Inter", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+
+  color: #ffffff;
+}
+.modal__button:hover {
+  opacity: 0.8;
+}
+
+.modal__close {
+  background-image: url(../images/Close-Icon.svg);
+  width: 40px;
+  position: absolute;
+  height: 40px;
+  right: -45px;
+  top: -45px;
+  background-color: transparent;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: none;
+}
+.modal__close:hover {
+  opacity: 0.6;
+}
+.modal_opened {
+  display: flex;
+}
