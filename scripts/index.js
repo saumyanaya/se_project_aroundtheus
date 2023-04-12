@@ -60,8 +60,8 @@ function getCardElement(data) {
   cardTitle.textContent = data.name;
   return cardElement;
 }
-let cardList = document.querySelector(".cards__list");
-for (let cardData of initialCards) {
-  let cardElement = getCardElement(cardData);
+const cardList = document.querySelector(".cards__list");
+for (const cardData of initialCards) {
+  const cardElement = getCardElement(cardData);
   cardList.append(cardElement);
 }
