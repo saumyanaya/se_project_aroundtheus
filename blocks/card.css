@@ -39,6 +39,28 @@
   height: 18px;
   border: none;
 }
+.card__trash-button {
+  background: transparent url(../images/trash.svg) center no-repeat;
+  position: absolute;
+  width: 60%;
+  height: 19px;
+  border: none;
+  margin: 0;
+  padding: 0;
+  background-size: contain;
+  margin-right: 18px;
+  margin-top: 15px;
+}
+.card__trash-button_inactive {
+  background: url(../images/trashinactive.svg);
+}
+.card__trash-button:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+.card__like-button_active {
+  background: url(../images/union.svg);
+}
 .card__like-button:hover {
   opacity: 0.5;
   cursor: pointer;

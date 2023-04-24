@@ -40,13 +40,15 @@
             class="profile__add-button"
             aria-label="add-button"
             type="button"
+            id="profile__add-button"
           ></button>
         </section>
         <section class="cards page__section">
           <ul class="cards__list">
             <template id="card">
               <li class="card">
-                <img class="card__image" alt="image" />
+                <button class="card__trash-button" alt="button"></button>
+                <img class="card__image" alt="image" id="card__image" />
                 <div class="card__description">
                   <h2 class="card__title"></h2>
                   <button class="card__like-button" type="button"></button>
@@ -86,6 +88,40 @@
         </form>
       </div>
     </div>
+
+    <div class="modal" id="profile__add-modal">
+      <div class="modal__container">
+        <button class="modal__close" type="button"></button>
+        <h2 class="modal__title">New place</h2>
+        <form class="modal__form" id="profile__add-form">
+          <input
+            type="text"
+            class="modal__input"
+            name="title"
+            id="card__title-input"
+            placeholder="Title"
+            required
+          />
+          <input
+            type="link"
+            class="modal__input"
+            name="url"
+            id="card__url-input"
+            placeholder="Image URL"
+            required
+          />
+          <button type="submit" class="modal__button">Create</button>
+        </form>
+      </div>
+    </div>
+    <div class="modal" id="card-open-modal">
+      <div class="modal__content modal__content_card">
+        <img class="modal__image" src="#" alt="bar" />
+        <button class="modal__close" id="image-close-button"></button>
+        <p class="modal__text"></p>
+      </div>
+    </div>
+
     <script src="./scripts/index.js" defer></script>
   </body>
 </html>
