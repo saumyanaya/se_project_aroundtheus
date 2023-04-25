@@ -36,9 +36,10 @@ const profileTitleInput = document.querySelector("#profile__title-input");
 const profileDescriptionInput = document.querySelector(
   "#profile__description-input"
 );
-
+const cardOpenModal = document.querySelector("#card-open-modal");
 const cardTemplate = document.querySelector("#card").content;
 const profileAddCloseButton = profileAddModal.querySelector(".modal__close");
+const cardModalCloseButton = cardOpenModal.querySelector(".modal__close");
 const profileTitle = document.querySelector(".profile__title");
 const profileDescription = document.querySelector(".profile__description");
 const cardTitleInput = document.querySelector("#card__title-input");
@@ -56,10 +57,13 @@ profileAddButton.addEventListener("click", function () {
 profileEditCloseButton.addEventListener("click", function () {
   profileEditModal.classList.remove("modal_opened");
 });
+
 profileAddCloseButton.addEventListener("click", function () {
   profileAddModal.classList.remove("modal_opened");
 });
-
+cardModalCloseButton.addEventListener("click", function () {
+  cardOpenModal.classList.remove("modal_opened");
+});
 profileEditForm.addEventListener("submit", function (evt) {
   evt.preventDefault();
   profileTitle.textContent = profileTitleInput.value;
@@ -83,12 +87,19 @@ function getCardElement(data) {
   likeButton.addEventListener("click", function () {
     likeButton.classList.toggle("card__like-button_active");
   });
+  const modalImage = document.querySelector("#modal__image");
+  const modalText = document.querySelector("#modal__text");
+  cardImage.addEventListener("click", function () {
+    modalImage.src = data.link;
+    modalText.alt = data.name;
+    modalText.textContent = data.name;
+    cardOpenModal.classList.add("modal_opened");
+  });
   const trashButton = cardElement.querySelector(".card__trash-button");
   const cardList = cardElement.querySelector(".card");
   trashButton.addEventListener("click", function () {
     cardList.remove("card");
   });
-
   cardImage.src = data.link;
   cardImage.alt = data.name;
   cardTitle.textContent = data.name;
@@ -99,9 +110,4 @@ initialCards.forEach(function (card) {
   const data = card;
   const cardElement = getCardElement(data);
   cardList.append(cardElement);
-});
-const cardOpenModal = document.querySelector("#card-open-modal");
-const cardImage = document.querySelector("#card__image");
-cardImage.addEventListener("click", function () {
-  cardOpenModal.classList.add("modal__image");
 });

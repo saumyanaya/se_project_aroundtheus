@@ -48,7 +48,9 @@
             <template id="card">
               <li class="card">
                 <button class="card__trash-button" alt="button"></button>
-                <img class="card__image" alt="image" id="card__image" />
+                <a href="#card-open-modal"
+                  ><img class="card__image" alt="image" id="card__image"
+                /></a>
                 <div class="card__description">
                   <h2 class="card__title"></h2>
                   <button class="card__like-button" type="button"></button>
@@ -116,9 +118,9 @@
     </div>
     <div class="modal" id="card-open-modal">
       <div class="modal__content modal__content_card">
-        <img class="modal__image" src="#" alt="bar" />
-        <button class="modal__close" id="image-close-button"></button>
-        <p class="modal__text"></p>
+        <img class="modal__image" src="#" alt="bar" id="modal__image" />
+        <button class="modal__close" type="button"></button>
+        <p class="modal__text" id="modal__text"></p>
       </div>
     </div>
 
