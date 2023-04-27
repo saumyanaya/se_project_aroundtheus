@@ -6,9 +6,12 @@
   bottom: 0;
   right: 0;
   display: flex;
-  visibility: hidden;
+  justify-content: center;
+  align-items: center;
+  visibility: none;
   opacity: 0;
-  transition: ease-in-out, visibility 0.3s linear;
+  pointer-events: none;
+  transition: visibility 0s 0.5s, opacity 0.5s linear;
 }
 
 .modal__container {
@@ -97,11 +100,9 @@
   transition-duration: 0.3s;
 }
 .modal_opened {
-  justify-content: center;
-  align-items: center;
+  transition: visibility 0s, opacity 0.5s linear;
   visibility: visible;
   pointer-events: all;
-  transition-delay: 0.3s;
   opacity: 1;
 }
 .modal__image {
