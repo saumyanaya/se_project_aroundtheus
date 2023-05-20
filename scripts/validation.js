@@ -1,17 +1,17 @@
 const modalElement = document.querySelector(".modal");
 const modalInput = modalElement.querySelector(".modal__input");
-const modalError = modalElement.querySelector(`.${modalInput.id}-error`);
+const modalError = modalElement.querySelector(`#${modalInput.id}-error`);
 
 const showInputError = (modalElement, modalInput, errorMessage) => {
   modalElement.classList.add("modal__input_type-error");
-  const modalError = modalElement.querySelector(`.${modalInput.id}-error`);
+  const modalError = modalElement.querySelector(`#${modalInput.id}-error`);
   modalError.textContent = errorMessage;
   modalError.classList.add("modal__input-error_active");
 };
 
 const hideInputError = (modalElement, modalInput) => {
   modalElement.classList.remove("modal__input_type-error");
-  const modalError = modalElement.querySelector(`.${modalInput.id}-error`);
+  const modalError = modalElement.querySelector(`#${modalInput.id}-error`);
   modalError.classList.remove("modal__input-error_active");
   modalError.textContent = "";
 };

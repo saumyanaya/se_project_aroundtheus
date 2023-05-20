@@ -133,6 +133,11 @@ document.addEventListener("keydown", (event) => {
     closeModal(profileAddModal);
   }
 });
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    closeModal(cardOpenModal);
+  }
+});
 
 // clicking outside Modal window to close modal //
 

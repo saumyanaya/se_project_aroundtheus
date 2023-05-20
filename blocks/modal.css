@@ -137,11 +137,18 @@
 .modal__input_type-error {
   border-bottom-color: red;
 }
-
 .modal__input:invalid {
   border-bottom: 1px solid red;
 }
-
+/* .modal__error {
+  font-family: "Inter", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: red;
+  visibility: hidden;
+} */
 .modal__input-error_active {
   visibility: visible;
   font-family: "Inter", Arial, sans-serif;
