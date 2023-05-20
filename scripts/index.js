@@ -65,6 +65,7 @@ profileAddCloseButton.addEventListener("click", function () {
 cardModalCloseButton.addEventListener("click", function () {
   closeModal(cardOpenModal);
 });
+
 profileEditForm.addEventListener("submit", function (evt) {
   evt.preventDefault();
   profileTitle.textContent = profileTitleInput.value;
@@ -119,4 +120,43 @@ initialCards.forEach(function (card) {
   const data = card;
   const cardElement = getCardElement(data);
   cardList.append(cardElement);
+});
+// clicking escape to close Modal //
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    closeModal(profileEditModal);
+  }
+});
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    closeModal(profileAddModal);
+  }
+});
+
+// clicking outside Modal window to close modal //
+
+profileEditModal.addEventListener("click", (event) => {
+  if (
+    event.target.classList.contains("modal") ||
+    event.target.classList.contains("modal__close")
+  ) {
+    profileEditModal.classList.remove("modal_opened");
+  }
+});
+profileAddModal.addEventListener("click", (event) => {
+  if (
+    event.target.classList.contains("modal") ||
+    event.target.classList.contains("modal__close")
+  ) {
+    profileAddModal.classList.remove("modal_opened");
+  }
+});
+cardOpenModal.addEventListener("click", (event) => {
+  if (
+    event.target.classList.contains("modal") ||
+    event.target.classList.contains("modal__close")
+  ) {
+    cardOpenModal.classList.remove("modal_opened");
+  }
 });

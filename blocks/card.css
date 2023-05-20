@@ -68,3 +68,21 @@
   cursor: pointer;
   transition-duration: 0.3s;
 }
+.card__title-input-error {
+  font-family: "Inter", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: red;
+  visibility: hidden;
+}
+.card__url-input-error {
+  font-family: "Inter", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: red;
+  visibility: hidden;
+}

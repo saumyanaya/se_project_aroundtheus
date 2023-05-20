@@ -73,6 +73,24 @@
   background-position: center;
   margin-right: 24px;
 }
+.profile__title-input-error {
+  font-family: "Inter", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: red;
+  visibility: hidden;
+}
+.profile__description-input-error {
+  font-family: "Inter", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: red;
+  visibility: hidden;
+}
 
 @media screen and (min-width: 320px) and (max-width: 768px) {
   .profile {
