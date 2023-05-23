@@ -55,17 +55,6 @@ profileEditButton.addEventListener("click", function () {
 profileAddButton.addEventListener("click", function () {
   openModal(profileAddModal);
 });
-profileEditCloseButton.addEventListener("click", function () {
-  closeModal(profileEditModal);
-});
-
-profileAddCloseButton.addEventListener("click", function () {
-  closeModal(profileAddModal);
-});
-cardModalCloseButton.addEventListener("click", function () {
-  closeModal(cardOpenModal);
-});
-
 profileEditForm.addEventListener("submit", function (evt) {
   evt.preventDefault();
   profileTitle.textContent = profileTitleInput.value;
@@ -95,7 +84,7 @@ function getCardElement(data) {
   const modalText = document.querySelector("#modal__text");
   cardImage.addEventListener("click", function () {
     modalImage.src = data.link;
-    modalText.alt = data.name;
+    modalImage.alt = data.name;
     modalText.textContent = data.name;
     openModal(cardOpenModal);
   });
@@ -123,45 +112,33 @@ initialCards.forEach(function (card) {
 });
 // clicking escape to close Modal //
 
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") {
-    closeModal(profileEditModal);
+function openModal(modal) {
+  document.addEventListener("keydown", closeWithEscape);
+  modal.classList.add("modal_opened");
+}
+function closeModal(modal) {
+  document.removeEventListener("keydown", closeWithEscape);
+  modal.classList.remove("modal_opened");
+}
+function closeWithEscape(evt) {
+  if (evt.key === "Escape") {
+    const modal = document.querySelector(".modal_opened");
+    closeModal(modal);
   }
-});
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") {
-    closeModal(profileAddModal);
-  }
-});
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") {
-    closeModal(cardOpenModal);
-  }
-});
+}
 
 // clicking outside Modal window to close modal //
 
-profileEditModal.addEventListener("click", (event) => {
-  if (
-    event.target.classList.contains("modal") ||
-    event.target.classList.contains("modal__close")
-  ) {
-    profileEditModal.classList.remove("modal_opened");
-  }
-});
-profileAddModal.addEventListener("click", (event) => {
-  if (
-    event.target.classList.contains("modal") ||
-    event.target.classList.contains("modal__close")
-  ) {
-    profileAddModal.classList.remove("modal_opened");
-  }
-});
-cardOpenModal.addEventListener("click", (event) => {
-  if (
-    event.target.classList.contains("modal") ||
-    event.target.classList.contains("modal__close")
-  ) {
-    cardOpenModal.classList.remove("modal_opened");
-  }
-});
+addEventListener(profileEditModal);
+addEventListener(profileAddModal);
+addEventListener(cardOpenModal);
+function addEventListener(modal) {
+  modal.addEventListener("click", (event) => {
+    if (
+      event.target.classList.contains("modal") ||
+      event.target.classList.contains("modal__close")
+    ) {
+      closeModal(modal);
+    }
+  });
+}
