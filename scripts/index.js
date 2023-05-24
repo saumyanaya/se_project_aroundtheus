@@ -39,6 +39,7 @@ const profileDescriptionInput = document.querySelector(
 const cardOpenModal = document.querySelector("#card-open-modal");
 const cardTemplate = document.querySelector("#card").content;
 const profileAddCloseButton = profileAddModal.querySelector(".modal__close");
+const profileAddSubmitButton = profileAddModal.querySelector(".modal__button");
 const cardModalCloseButton = cardOpenModal.querySelector(".modal__close");
 const profileTitle = document.querySelector(".profile__title");
 const profileDescription = document.querySelector(".profile__description");
@@ -54,6 +55,8 @@ profileEditButton.addEventListener("click", function () {
 });
 profileAddButton.addEventListener("click", function () {
   openModal(profileAddModal);
+  profileAddSubmitButton.disabled = true;
+  profileAddSubmitButton.classList.add("modal__button_inactive");
 });
 profileEditForm.addEventListener("submit", function (evt) {
   evt.preventDefault();
@@ -97,13 +100,7 @@ function getCardElement(data) {
   cardTitle.textContent = data.name;
   return cardElement;
 }
-function openModal(modal) {
-  modal.classList.add("modal_opened");
-}
 
-function closeModal(modal) {
-  modal.classList.remove("modal_opened");
-}
 const cardList = document.querySelector(".cards__list");
 initialCards.forEach(function (card) {
   const data = card;
@@ -129,10 +126,10 @@ function closeWithEscape(evt) {
 
 // clicking outside Modal window to close modal //
 
-addEventListener(profileEditModal);
-addEventListener(profileAddModal);
-addEventListener(cardOpenModal);
-function addEventListener(modal) {
+addCloseModalListener(profileEditModal);
+addCloseModalListener(profileAddModal);
+addCloseModalListener(cardOpenModal);
+function addCloseModalListener(modal) {
   modal.addEventListener("click", (event) => {
     if (
       event.target.classList.contains("modal") ||
