@@ -1,3 +1,15 @@
+// import
+
+import Card from "../scripts/components/Card.js";
+import FormValidator from "../scripts/components/formValidator.js";
+import {
+  openModal,
+  closeModal,
+  addCloseModalListener,
+} from "../scripts/utils/utils.js";
+
+//initial cards array
+
 const initialCards = [
   {
     name: "Yosemite Valley",
@@ -24,6 +36,34 @@ const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
   },
 ];
+
+//validation
+
+const settings = {
+  formSelector: ".modal",
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__button",
+  disabledButtonClass: "modal__button_inactive",
+  inputErrorClass: "modal__input_type-error",
+  errorClass: "modal__input-error_active",
+};
+
+const formValidators = {};
+
+const enableValidation = (settings) => {
+  const modalList = Array.from(
+    document.querySelectorAll(settings.formSelector)
+  );
+  modalList.forEach((modalElement) => {
+    const validator = new FormValidator(settings, modalElement);
+    const formName = modalElement.getAttribute("name");
+    formValidators[formName] = validator;
+    validator.enableValidation();
+  });
+};
+enableValidation(settings);
+
+//modal elements
 
 const profileAddButton = document.querySelector("#profile__add-button");
 const profileEditButton = document.querySelector("#profile__edit-button");
@@ -67,75 +107,22 @@ profileEditForm.addEventListener("submit", function (evt) {
 });
 profileAddForm.addEventListener("submit", function (evt) {
   evt.preventDefault();
-  const name = cardTitleInput.value;
-  const link = cardUrlInput.value;
-  const cardElement = getCardElement({ name, link });
+  const data = { name: cardTitleInput.value, link: cardUrlInput.value };
+  const cardElement = new Card(data, "#card").generateCard();
   cardList.prepend(cardElement);
   closeModal(profileAddModal);
   profileAddForm.reset();
 });
-
-function getCardElement(data) {
-  const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
-  const cardImage = cardElement.querySelector(".card__image");
-  const cardTitle = cardElement.querySelector(".card__title");
-  const likeButton = cardElement.querySelector(".card__like-button");
-  likeButton.addEventListener("click", function () {
-    likeButton.classList.toggle("card__like-button_active");
-  });
-  const modalImage = document.querySelector("#modal__image");
-  const modalText = document.querySelector("#modal__text");
-  cardImage.addEventListener("click", function () {
-    modalImage.src = data.link;
-    modalImage.alt = data.name;
-    modalText.textContent = data.name;
-    openModal(cardOpenModal);
-  });
-  const trashButton = cardElement.querySelector(".card__trash-button");
-  trashButton.addEventListener("click", function () {
-    cardElement.remove("card");
-  });
-  cardImage.src = data.link;
-  cardImage.alt = data.name;
-  cardTitle.textContent = data.name;
-  return cardElement;
-}
-
+//render card function
 const cardList = document.querySelector(".cards__list");
 initialCards.forEach(function (card) {
   const data = card;
-  const cardElement = getCardElement(data);
+  const cardElement = new Card(data, "#card").generateCard();
   cardList.append(cardElement);
 });
-// clicking escape to close Modal //
 
-function openModal(modal) {
-  document.addEventListener("keydown", closeWithEscape);
-  modal.classList.add("modal_opened");
-}
-function closeModal(modal) {
-  document.removeEventListener("keydown", closeWithEscape);
-  modal.classList.remove("modal_opened");
-}
-function closeWithEscape(evt) {
-  if (evt.key === "Escape") {
-    const modal = document.querySelector(".modal_opened");
-    closeModal(modal);
-  }
-}
-
-// clicking outside Modal window to close modal //
+//clicking outside Modal window to close modal //
 
 addCloseModalListener(profileEditModal);
 addCloseModalListener(profileAddModal);
 addCloseModalListener(cardOpenModal);
-function addCloseModalListener(modal) {
-  modal.addEventListener("click", (event) => {
-    if (
-      event.target.classList.contains("modal") ||
-      event.target.classList.contains("modal__close")
-    ) {
-      closeModal(modal);
-    }
-  });
-}
