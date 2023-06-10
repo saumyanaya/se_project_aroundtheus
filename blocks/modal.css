@@ -137,7 +137,7 @@
 .modal__input_type-error {
   border-bottom-color: red;
 }
-.modal__input:invalid {
+.modal__input-invalid {
   border-bottom: 1px solid red;
 }
 .modal__input-error_active {

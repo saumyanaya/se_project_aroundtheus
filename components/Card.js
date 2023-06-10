@@ -1,5 +1,3 @@
-// contain card class
-// exported
 import { openModal } from "../utils/utils.js";
 
 export default class Card {
@@ -47,7 +45,7 @@ export default class Card {
     this._likeButton.classList.toggle("card__like-button_active");
   }
   _handleTrashButton() {
-    this._cardElement.remove("card");
+    this._cardElement.remove();
   }
   _setEventListeners() {
     this._cardImage.addEventListener("click", () =>

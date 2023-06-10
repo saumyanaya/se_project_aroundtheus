@@ -1,5 +1,3 @@
-// contain formValidator class
-// exported
 export default class FormValidator {
   constructor(settings, modalElement) {
     this._modalElement = modalElement;
@@ -19,15 +17,22 @@ export default class FormValidator {
       `#${modalInput.id}-error`
     );
     modalError.textContent = errorMessage;
+    modalInput.classList.add("modal__input-invalid");
     modalError.classList.add(this._modalInputErrorActive);
   };
 
   _hideInputError = (modalElement, modalInput) => {
     this._modalElement.classList.remove(this._modalInputTypeError);
     const modalError = modalElement.querySelector(`#${modalInput.id}-error`);
+    modalInput.classList.remove("modal__input-invalid");
     modalError.classList.remove(this._modalInputErrorActive);
     modalError.textContent = "";
   };
+
+  _disableButton() {
+    this._modalButton.classList.add(this._modalButtonInactive);
+    this._modalButton.disabled = true;
+  }
 
   _isValid = (modalElement, modalInput) => {
     if (null != modalInput) {
@@ -48,12 +53,10 @@ export default class FormValidator {
     });
   };
 
-  _toggleButtonState = (modalInputList, modalButton) => {
-    if (this._hasInvalidInput(modalInputList)) {
-      this._modalButton.classList.add(this._modalButtonInactive);
-      this._modalButton.disabled = true;
-      return;
-    } else if (modalButton != null) {
+  _toggleButtonState = () => {
+    if (this._hasInvalidInput()) {
+      this._disableButton();
+    } else {
       this._modalButton.classList.remove(this._modalButtonInactive);
       this._modalButton.disabled = false;
     }
