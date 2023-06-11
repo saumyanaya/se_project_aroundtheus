@@ -29,7 +29,7 @@ export default class FormValidator {
     modalError.textContent = "";
   };
 
-  _disableButton() {
+  disableButton() {
     this._modalButton.classList.add(this._modalButtonInactive);
     this._modalButton.disabled = true;
   }
@@ -55,7 +55,7 @@ export default class FormValidator {
 
   _toggleButtonState = () => {
     if (this._hasInvalidInput()) {
-      this._disableButton();
+      this.disableButton();
     } else {
       this._modalButton.classList.remove(this._modalButtonInactive);
       this._modalButton.disabled = false;

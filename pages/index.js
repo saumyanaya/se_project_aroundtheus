@@ -78,6 +78,7 @@ profileEditButton.addEventListener("click", function () {
   openModal(profileEditModal);
 });
 profileAddButton.addEventListener("click", function () {
+  addCardFormValidator.disableButton();
   openModal(profileAddModal);
 });
 
@@ -114,13 +115,8 @@ addCloseModalListener(profileEditModal);
 addCloseModalListener(profileAddModal);
 addCloseModalListener(cardOpenModal);
 
-const enableValidation = (settings) => {
-  const addCardFormValidator = new FormValidator(settings, profileAddModal);
-  addCardFormValidator.enableValidation();
-  const editProfileFormValidator = new FormValidator(
-    settings,
-    profileEditModal
-  );
-  editProfileFormValidator.enableValidation();
-};
-enableValidation(settings);
+const addCardFormValidator = new FormValidator(settings, profileAddModal);
+addCardFormValidator.enableValidation();
+
+const editProfileFormValidator = new FormValidator(settings, profileEditModal);
+editProfileFormValidator.enableValidation();
