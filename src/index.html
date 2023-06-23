@@ -9,13 +9,12 @@
     <meta name="keywords" content="HTML,CSS" />
     <title>Around the U.S</title>
     <link rel="icon" href="favicon.ico" />
-    <link rel="stylesheet" href="./pages/index.css" />
   </head>
   <body class="page">
     <div class="page__content">
       <header class="header page__section">
         <img
-          src="./images/logo.svg"
+          src='<%=require("./images/logo.svg")%>'
           alt="Around the U.S. Logo"
           class="header__logo"
         />
@@ -23,7 +22,7 @@
       <main class="content">
         <section class="profile page__section">
           <img
-            src="./images/jacques-cousteau.jpg"
+            src='<%=require("./images/jacques-cousteau.jpg")%>'
             alt="avatar"
             class="profile__image"
           />
@@ -148,7 +147,5 @@
         <p class="modal__text" id="modal__text"></p>
       </div>
     </div>
-
-    <script src="./pages/index.js" type="module" defer></script>
   </body>
 </html>
