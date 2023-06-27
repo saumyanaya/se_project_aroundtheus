@@ -22,15 +22,15 @@ import {
   cardOpenModal,
 } from "../utils/constants.js";
 
-profileEditButton.addEventListener("click", function () {
-  profileTitle.value = profileTitle.textContent;
-  profileDescription.value = profileDescription.textContent;
-  openModal(profileEditModal);
-});
-profileAddButton.addEventListener("click", function () {
-  addCardFormValidator.disableButton();
-  openModal(profileAddModal);
-});
+// profileEditButton.addEventListener("click", function () {
+//   profileTitle.value = profileTitle.textContent;
+//   profileDescription.value = profileDescription.textContent;
+//   openModal(profileEditModal);
+// });
+// profileAddButton.addEventListener("click", function () {
+//   addCardFormValidator.disableButton();
+//   newCardPopup.open();
+// });
 
 // profileEditForm.addEventListener("submit", function (evt) {
 //   evt.preventDefault();
@@ -69,7 +69,7 @@ addCardFormValidator.enableValidation();
 const editProfileFormValidator = new FormValidator(settings, profileEditModal);
 editProfileFormValidator.enableValidation();
 
-//Section Class
+//SECTION TO RENDER CARDS
 
 const cardListSection = new Section(
   {
@@ -92,6 +92,7 @@ const cardOpenPopup = new PopupWithImage(cardOpenModal);
 cardOpenPopup.setEventListeners();
 
 profileAddButton.addEventListener("click", () => {
+  addCardFormValidator.disableButton();
   // addCardFormValidator.toggleButtonState();
   newCardPopup.open();
 });
