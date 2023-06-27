@@ -1,12 +1,9 @@
-import { openModal } from "../utils/utils.js";
-
 export default class Card {
-  constructor(data, cardSelector) {
-    this._title = data.title;
-    this._description = data.description;
+  constructor(data, cardSelector, handleCardClick) {
     this._name = data.name;
     this._link = data.link;
     this._cardSelector = cardSelector;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -34,12 +31,12 @@ export default class Card {
     return this._cardElement;
   }
 
-  _handleCardOpenModal() {
-    this._modalImage.src = this._link;
-    this._modalImage.alt = this._name;
-    this._modalText.textContent = this._name;
-    openModal(this._cardOpenModal);
-  }
+  // _handleCardOpenModal() {
+  //   this._modalImage.src = this._link;
+  //   this._modalImage.alt = this._name;
+  //   this._modalText.textContent = this._name;
+  //   openModal(this._cardOpenModal);
+  // }
 
   _handleLikeButton() {
     this._likeButton.classList.toggle("card__like-button_active");
@@ -49,7 +46,7 @@ export default class Card {
   }
   _setEventListeners() {
     this._cardImage.addEventListener("click", () =>
-      this._handleCardOpenModal()
+      this._handleCardClick({ name: this._name, link: this._link })
     );
     this._likeButton.addEventListener("click", () => this._handleLikeButton());
     this._trashButton.addEventListener("click", () =>
