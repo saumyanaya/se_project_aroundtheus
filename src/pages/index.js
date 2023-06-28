@@ -22,16 +22,6 @@ import {
   cardOpenModal,
 } from "../utils/constants.js";
 
-// profileEditButton.addEventListener("click", function () {
-//   profileTitle.value = profileTitle.textContent;
-//   profileDescription.value = profileDescription.textContent;
-//   openModal(profileEditModal);
-// });
-// profileAddButton.addEventListener("click", function () {
-//   addCardFormValidator.disableButton();
-//   newCardPopup.open();
-// });
-
 // profileEditForm.addEventListener("submit", function (evt) {
 //   evt.preventDefault();
 //   profileTitle.textContent = profileTitle.value;
@@ -54,7 +44,7 @@ import {
 // const cardList = document.querySelector(".cards__list");
 
 function createCard(cardData) {
-  const card = new Card(cardData, "#card").generateCard();
+  const card = new Card(cardData, "#card", handleCardClick).generateCard();
   return card;
 }
 initialCards.forEach((card) => {
@@ -87,15 +77,10 @@ cardListSection.renderItems();
 // //Popup with form
 
 const newCardPopup = new PopupWithForm(profileAddModal, submitCard);
+newCardPopup.setEventListeners();
+
 const cardOpenPopup = new PopupWithImage(cardOpenModal);
-
 cardOpenPopup.setEventListeners();
-
-profileAddButton.addEventListener("click", () => {
-  addCardFormValidator.disableButton();
-  // addCardFormValidator.toggleButtonState();
-  newCardPopup.open();
-});
 
 //userInfo
 
@@ -108,6 +93,24 @@ const editProfilePopup = new PopupWithForm(profileEditModal, (inputsObject) => {
 
 profileEditButton.addEventListener("click", openProfilePopup);
 
+profileAddButton.addEventListener("click", () => {
+  addCardFormValidator.disableButton();
+  //addCardFormValidator.toggleButtonState();
+  newCardPopup.open();
+});
+
+// profileEditButton.addEventListener("click", () {
+//    profileTitle.value = profileTitle.textContent;
+//    profileDescription.value = profileDescription.textContent;
+//    popup
+//  });
+
+// profileAddButton.addEventListener("click", function () {
+//   addCardFormValidator.disableButton();
+//   newCardPopup.open();
+// cardOpenModal(profileAddModal);
+// });
+
 function openProfilePopup() {
   const { profileName, description } = userInfo.getUserInfo();
   profileTitle.value = profileName;
@@ -116,8 +119,14 @@ function openProfilePopup() {
   editProfilePopup.open();
 }
 function submitCard({ title, url }) {
+  alert("submit form index");
   const newCardData = { name: title, link: url };
   const newCard = createCard(newCardData); // creates "newCard" & stores the function returned execution of createCard fn
   cardListSection.prependItem(newCard); // prepend method from Section class
   newCardPopup.close();
+}
+
+function handleCardClick(name, link) {
+  alert("handle card click");
+  cardOpenPopup.open(name, link);
 }
