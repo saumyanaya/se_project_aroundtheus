@@ -9,6 +9,7 @@ export default class FormValidator {
     this._modalButtonInactive = settings.disabledButtonClass;
     this._modalInputTypeError = settings.inputErrorClass;
     this._modalInputErrorActive = settings.errorClass;
+    this._modalInputInvalid = settings.invalidSelector;
   }
 
   _showInputError = (modalElement, modalInput, errorMessage) => {
@@ -17,14 +18,15 @@ export default class FormValidator {
       `#${modalInput.id}-error`
     );
     modalError.textContent = errorMessage;
-    modalInput.classList.add("modal__input-invalid");
+    modalInput.classList.add(this._modalInputInvalid);
+
     modalError.classList.add(this._modalInputErrorActive);
   };
 
   _hideInputError = (modalElement, modalInput) => {
     this._modalElement.classList.remove(this._modalInputTypeError);
     const modalError = modalElement.querySelector(`#${modalInput.id}-error`);
-    modalInput.classList.remove("modal__input-invalid");
+    modalInput.classList.remove(this._modalInputInvalid);
     modalError.classList.remove(this._modalInputErrorActive);
     modalError.textContent = "";
   };

@@ -28,9 +28,6 @@ function createCard(cardData) {
   const card = new Card(cardData, "#card", handleCardClick).generateCard();
   return card;
 }
-initialCards.forEach((card) => {
-  cardList.append(createCard(card));
-});
 
 //FORM VALIDATOR
 
@@ -63,7 +60,10 @@ newCardPopup.setEventListeners();
 const cardOpenPopup = new PopupWithImage(cardOpenModal);
 cardOpenPopup.setEventListeners();
 
-const editProfilePopup = new PopupWithForm(profileEditModal, handleFormSubmit);
+const editProfilePopup = new PopupWithForm(
+  profileEditModal,
+  handleEditFormSubmit
+);
 editProfilePopup.setEventListeners();
 
 //PROFILE INFO
@@ -94,10 +94,7 @@ function submitCard({ title, url }) {
 function handleCardClick(name, link) {
   cardOpenPopup.open(name, link);
 }
-function handleFormSubmit(profileName, description) {
-  userInfo.setUserInfo(profileTitle.value, profileDescription.value);
-  profileName = profileTitle.value;
-  description = profileDescription.value;
-
+function handleEditFormSubmit(inputObj) {
+  userInfo.setUserInfo(inputObj.title, inputObj.description);
   editProfilePopup.close();
 }
