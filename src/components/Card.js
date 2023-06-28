@@ -31,13 +31,6 @@ export default class Card {
     return this._cardElement;
   }
 
-  // _handleCardOpenModal() {
-  //   this._modalImage.src = this._link;
-  //   this._modalImage.alt = this._name;
-  //   this._modalText.textContent = this._name;
-  //   openModal(this._cardOpenModal);
-  // }
-
   _handleLikeButton() {
     this._likeButton.classList.toggle("card__like-button_active");
   }
