@@ -20,9 +20,6 @@ export default class Card {
     this._cardImage = this._cardElement.querySelector(".card__image");
     this._cardTitle = this._cardElement.querySelector(".card__title");
     this._likeButton = this._cardElement.querySelector(".card__like-button");
-    this._cardOpenModal = document.querySelector("#card-open-modal");
-    this._modalImage = this._cardOpenModal.querySelector("#modal__image");
-    this._modalText = this._cardOpenModal.querySelector("#modal__text");
     this._trashButton = this._cardElement.querySelector(".card__trash-button");
     this._cardImage.src = this._link;
     this._cardImage.alt = this._name;
