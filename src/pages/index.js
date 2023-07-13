@@ -23,7 +23,7 @@ import {
 } from "../utils/constants.js";
 import Api from "../components/Api.js";
 import PopupWithConfirm from "../components/PopupWithConfirm.js";
-import { data } from "autoprefixer";
+// import { data } from "autoprefixer";
 
 //-----------------------------------------------------------API---------------------------------------------------------------------------------------------------------------------
 //api instance
@@ -37,7 +37,7 @@ const api = new Api({
 });
 
 let userId;
-let cardListSection;
+// let cardListSection;
 
 Promise.all([api.getInitialCards(), api.getUserInfo()])
   .then(([initialCards, userData]) => {
@@ -47,8 +47,8 @@ Promise.all([api.getInitialCards(), api.getUserInfo()])
     cardListSection = new Section(
       {
         items: initialCards,
-        renderer: (data) => {
-          const newCard = createCard(data);
+        renderer: ({ data }) => {
+          const newCard = createCard({ data });
           cardListSection.addItem(newCard);
         },
       },
@@ -57,7 +57,6 @@ Promise.all([api.getInitialCards(), api.getUserInfo()])
     cardListSection.renderItems();
   })
   .catch(() => (err) => console.log(err));
-
 //--------------------------------------------------------------AVATAR-------------------------------------------------------------------------------------
 //new avatar constants
 
@@ -86,7 +85,7 @@ const editAvatarPopup = new PopupWithForm(
 // avatar form submit function
 
 function handleProfileAvatarSubmit(url) {
-  alert("handleProfileSubmit");
+  alert(handleProfileAvatarSubmit);
   editAvatarPopup.setLoading(true);
   api
     .setUserAvatar(url)
@@ -129,6 +128,7 @@ const deleteImagePopup = new PopupWithConfirm(
 // function for delete card
 
 function handleCardDelete() {
+  alert(handleCardDelete);
   deleteImagePopup.setSubmitAction(() => {
     deleteImagePopup.setLoading(true);
     api
@@ -156,13 +156,29 @@ const deleteCardFormValidator = new FormValidator(
 deleteCardFormValidator.enableValidation();
 
 //-----------------------------------------------------------------CARDS--------------------------------------------------------------------
-
+//document
+//object
+//function
+//response
+//call
 //new card open popup instance
+const cardListSection = new Section(
+  {
+    items: initialCards,
+    renderer: ({ name, link }) => {
+      const newCard = createCard({ name, link });
+      cardListSection.addItem(newCard);
+    },
+  },
+  cardList
+);
+cardListSection.renderItems();
 
 const cardOpenPopup = new PopupWithImage(cardOpenModal);
 cardOpenPopup.setEventListeners();
 
 function createCard(data) {
+  alert(createCard);
   const newCard = new Card(
     data,
     userId,
@@ -170,10 +186,18 @@ function createCard(data) {
     function handleCardClick() {
       cardOpenPopup.open(data);
     },
+    // function createCard(cardData) {
+    //   const card = new Card(cardData, "#card", handleCardClick).generateCard();
+    //   return card;
+    // }
+    // function handleCardClick(name, link) {
+    //   cardOpenPopup.open(name, link);
+    // }
 
     //card like count function
 
     function handleCardLikeClick(data) {
+      alert(handleCardLikeClick);
       api
         .changeLikeCardStatus(data._id, newCard.isLiked())
         .then((res) => {
@@ -204,6 +228,7 @@ profileAddButton.addEventListener("click", () => {
 //function add submit
 
 function submitCard({ title, url }) {
+  alert(submitCard);
   newCardPopup.setLoading(true);
   api
     .addCard(title, url)
@@ -262,6 +287,7 @@ editProfilePopup.setEventListeners();
 // function of edit submit
 
 function handleEditFormSubmit({ title, description }) {
+  alert(handleEditFormSubmit);
   editProfilePopup.setLoading(true);
   api
     .updateUserInfo(title, description)

@@ -5,7 +5,7 @@ export default class Card {
     cardSelector,
     handleCardClick,
     handleDeleteClick,
-    handleCardlike
+    handleCardLike
   ) {
     this._name = name;
     this._link = link;
@@ -16,7 +16,7 @@ export default class Card {
     this._myId = myId;
     this._userId = userId;
     this._handleDeleteClick = handleDeleteClick;
-    this._handleCardLike = handleCardlike;
+    this._handleCardLike = handleCardLike;
   }
 
   _getTemplate() {
