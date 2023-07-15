@@ -47,8 +47,8 @@ Promise.all([api.getInitialCards(), api.getUserInfo()])
     cardListSection = new Section(
       {
         items: initialCards,
-        renderer: ({ name, link }) => {
-          const newCard = createCard({ name, link });
+        renderer: ({ name, link, _id }) => {
+          const newCard = createCard({ name, link, _id });
           cardListSection.addItem(newCard);
         },
       },
@@ -124,8 +124,9 @@ deleteImagePopup.setEventListeners();
 
 function handleCardDelete() {
   deleteImagePopup.setLoading(true);
+  const id = deleteImagePopup.getId();
   api
-    .deleteCard(data._id)
+    .deleteCard(id)
     .then((res) => {
       newCard.remove(res._id);
       deleteImagePopup.close();
@@ -164,6 +165,7 @@ function createCard(data) {
     function handleDeleteClick() {
       console.log(this);
       deleteImagePopup.open();
+      deleteImagePopup.setId(data._id);
     },
 
     //card like count function
