@@ -3,13 +3,11 @@ export default class Api {
     this._baseUrl = baseUrl;
     this._headers = headers;
   }
-  _checkServerResponse() {
-    then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Error: ${res.status}`);
-    });
+  _checkServerResponse(res) {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Error: ${res.status}`);
   }
 
   getInitialCards() {
@@ -50,7 +48,7 @@ export default class Api {
       return this._checkServerResponse(res);
     });
   }
-  newCard(name, link) {
+  addCard(name, link) {
     return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
       headers: this._headers,

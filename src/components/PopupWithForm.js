@@ -13,7 +13,7 @@ export default class PopupWithFrom extends Popup {
   }
 
   _getInputValues() {
-    const inputsObject = {}; // object for storing data
+    const inputsObject = {};
     this._inputList = this._popupForm.querySelectorAll(".modal__input");
     this._inputList.forEach((input) => {
       if (input.value !== "") {
@@ -22,7 +22,13 @@ export default class PopupWithFrom extends Popup {
     });
     return inputsObject;
   }
-
+  setLoading(isLoading, submitSave) {
+    if (isLoading) {
+      this._popupForm.querySelector(".modal__button").textContent = "Saving...";
+    } else {
+      this._popupForm.querySelector(".modal__button").textContent = submitSave;
+    }
+  }
   _submitForm = () => {
     const inputValues = this._getInputValues();
     this._handleFormSubmit(inputValues);

@@ -19,7 +19,6 @@ export default class FormValidator {
     );
     modalError.textContent = errorMessage;
     modalInput.classList.add(this._modalInputInvalid);
-
     modalError.classList.add(this._modalInputErrorActive);
   };
 

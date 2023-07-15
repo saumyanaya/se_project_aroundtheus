@@ -40,7 +40,7 @@
   height: 18px;
   border: none;
 }
-.card__trash-button {
+.card__delete-button {
   background: transparent url(../images/trash.svg) center no-repeat;
   position: absolute;
   width: 60%;
@@ -52,10 +52,10 @@
   margin-right: 18px;
   margin-top: 15px;
 }
-.card__trash-button_inactive {
+.card__delete-button_inactive {
   background: url(../images/trashinactive.svg);
 }
-.card__trash-button:hover {
+.card__delete-button:hover {
   opacity: 0.5;
   cursor: pointer;
   transition-duration: 0.3s;
