@@ -47,8 +47,15 @@ Promise.all([api.getInitialCards(), api.getUserInfo()])
     cardListSection = new Section(
       {
         items: initialCards,
-        renderer: ({ name, link, _id }) => {
-          const newCard = createCard({ name, link, _id });
+
+        renderer: ({ name, link, _id, owner }) => {
+          const newCard = createCard({
+            name,
+            link,
+            _id,
+            userId,
+            ownerId: owner._id,
+          });
           cardListSection.addItem(newCard);
         },
       },
@@ -137,7 +144,7 @@ function handleCardDelete() {
     .finally(() => {
       deleteImagePopup.setLoading(false, "Yes");
     });
-  deleteImagePopup.open(data._id);
+  deleteImagePopup.open(id);
 }
 
 //delete card validator instance
@@ -154,6 +161,7 @@ const cardOpenPopup = new PopupWithImage(cardOpenModal);
 cardOpenPopup.setEventListeners();
 
 function createCard(data) {
+  const userId = data.userId;
   const newCard = new Card(
     data,
     userId,

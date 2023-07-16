@@ -53,7 +53,8 @@
   margin-top: 15px;
 }
 .card__delete-button_inactive {
-  background: url(../images/trashinactive.svg);
+  /* background: url(../images/trashinactive.svg); */
+  display: none;
 }
 .card__delete-button:hover {
   opacity: 0.5;
