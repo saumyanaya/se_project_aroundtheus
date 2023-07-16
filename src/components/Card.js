@@ -1,6 +1,6 @@
 export default class Card {
   constructor(
-    { name, link, likes, _id, userId },
+    { name, link, likes, _id, userId, ownerId },
     myId,
     cardSelector,
     handleCardClick,
@@ -15,6 +15,7 @@ export default class Card {
     this._id = _id;
     this._myId = myId;
     this._userId = userId;
+    this._ownerId = ownerId;
     this._handleDeleteClick = handleDeleteClick;
     this._handleCardLike = handleCardLike;
   }
@@ -39,10 +40,10 @@ export default class Card {
     this._cardImage.src = this._link;
     this._cardImage.alt = this._name;
     this._cardTitle.textContent = this._name;
-    this._cardElement.id = this.cardId;
+    // this._cardElement.id = this.cardId;
     this._setEventListeners();
     // this.renderLikes();
-    //this._handleLikeClick();
+    // this._handleLikeClick();
     return this._cardElement;
   }
   _handleLikeButton() {
@@ -59,12 +60,13 @@ export default class Card {
   }
   _setEventListeners() {
     this._cardImage.addEventListener("click", () =>
-      this._handleCardClick(this._getData())
+      this._handleCardClick({ name: this._name, link: this._link })
     );
     this._likeButton.addEventListener("click", () => this._handleLikeClick());
     this._deleteButton.addEventListener("click", () =>
       this._handleDeleteClick()
     );
+    this._checkUserId();
   }
   _getData() {
     const data = {
@@ -104,12 +106,11 @@ export default class Card {
     }
   }
   _checkUserId() {
-    if (this._myId !== this._user._id) {
-      this._deleteButton.classList.add("modal__delete-card-button");
+    if (this._ownerId !== this._userId) {
+      this._deleteButton.classList.add("card__delete-button_inactive");
     }
   }
-
-  remove() {
-    this._cardElement.remove();
+  remove(_id) {
+    this._cardElement.remove(_id);
   }
 }
