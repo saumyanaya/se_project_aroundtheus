@@ -42,8 +42,8 @@ export default class Card {
     this._cardTitle.textContent = this._name;
     // this._cardElement.id = this.cardId;
     this._setEventListeners();
-    // this.renderLikes();
-    // this._handleLikeClick();
+    this.renderLikes();
+    this._handleLikeClick();
     return this._cardElement;
   }
   _handleLikeButton() {
@@ -62,7 +62,7 @@ export default class Card {
     this._cardImage.addEventListener("click", () =>
       this._handleCardClick({ name: this._name, link: this._link })
     );
-    this._likeButton.addEventListener("click", () => this._handleLikeClick());
+    this._likeButton.addEventListener("click", () => this._handleLikeButton());
     this._deleteButton.addEventListener("click", () =>
       this._handleDeleteClick()
     );

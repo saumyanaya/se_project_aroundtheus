@@ -37,12 +37,12 @@ export default class Api {
       return this._checkServerResponse(res);
     });
   }
-  setUserAvatar(data) {
+  setUserAvatar(url) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
-        avatar: data.url,
+        avatar: url,
       }),
     }).then((res) => {
       return this._checkServerResponse(res);

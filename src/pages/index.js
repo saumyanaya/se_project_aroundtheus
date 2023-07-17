@@ -48,10 +48,11 @@ Promise.all([api.getInitialCards(), api.getUserInfo()])
       {
         items: initialCards,
 
-        renderer: ({ name, link, _id, owner }) => {
+        renderer: ({ name, link, likes, _id, owner }) => {
           const newCard = createCard({
             name,
             link,
+            likes,
             _id,
             userId,
             ownerId: owner._id,
@@ -95,7 +96,7 @@ editAvatarPopup.setEventListeners();
 function handleAvatarFormSubmit({ url }) {
   editAvatarPopup.setLoading(true);
   api
-    .updateUserInfo(url)
+    .setUserAvatar(url)
     .then(() => {
       userInfo.setUserInfo(url);
       editAvatarPopup.close();
@@ -135,7 +136,8 @@ function handleCardDelete() {
   api
     .deleteCard(id)
     .then((res) => {
-      newCard.remove(res._id);
+      console.log(res);
+      deleteImagePopup.remove();
       deleteImagePopup.close();
     })
     .catch((err) => {
@@ -174,12 +176,12 @@ function createCard(data) {
       console.log(this);
       deleteImagePopup.open();
       deleteImagePopup.setId(data._id);
+      deleteImagePopup.setCard(newCard);
     },
 
     //card like count function
 
-    function handleCardLikeClick(data) {
-      // alert("handleCardLike");
+    function handleCardLike(data) {
       api
         .changeLikeCardStatus(data._id, newCard.isLiked())
         .then((res) => {
