@@ -25,6 +25,7 @@ export default class Api {
       return this._checkServerResponse(res);
     });
   }
+
   updateUserInfo(name, about) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
