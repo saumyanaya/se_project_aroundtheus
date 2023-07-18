@@ -23,7 +23,6 @@ import {
 } from "../utils/constants.js";
 import Api from "../components/Api.js";
 import PopupWithConfirm from "../components/PopupWithConfirm.js";
-import { data } from "autoprefixer";
 
 //-----------------------------------------------------------API---------------------------------------------------------------------------------------------------------------------
 //api instance
@@ -68,6 +67,10 @@ Promise.all([api.getInitialCards(), api.getUserInfo()])
 //--------------------------------------------------------------AVATAR-------------------------------------------------------------------------------------
 //new avatar constants
 
+const profileAvatarModalImageSelector = document.querySelector(
+  // "#update-avatar-modal"
+  ".profile__image"
+);
 const profileAvatarModalSelector = document.querySelector(
   "#update-avatar-modal"
 );
@@ -97,8 +100,8 @@ function handleAvatarFormSubmit({ url }) {
   editAvatarPopup.setLoading(true);
   api
     .setUserAvatar(url)
-    .then(() => {
-      userInfo.setUserInfo(url);
+    .then((userData) => {
+      userInfo.setProfileAvatar(userData.avatar);
       editAvatarPopup.close();
     })
     .catch((err) => {
@@ -238,7 +241,7 @@ newCardPopup.setEventListeners();
 const userInfo = new UserInfo(
   profileTitleSelector,
   profileDescriptionSelector,
-  profileAvatarModalSelector
+  profileAvatarModalImageSelector
 );
 
 // calling edit popup
