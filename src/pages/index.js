@@ -41,6 +41,7 @@ let cardListSection;
 Promise.all([api.getInitialCards(), api.getUserInfo()])
   .then(([initialCards, userData]) => {
     userId = userData._id;
+    console.log(userId);
     userInfo.setUserInfo(userData.name, userData.about);
     userInfo.setProfileAvatar(userData.avatar);
     cardListSection = new Section(
@@ -67,29 +68,21 @@ Promise.all([api.getInitialCards(), api.getUserInfo()])
 //--------------------------------------------------------------AVATAR-------------------------------------------------------------------------------------
 //new avatar constants
 
-const profileAvatarModalImageSelector = document.querySelector(
-  // "#update-avatar-modal"
-  ".profile__image"
-);
-const profileAvatarModalSelector = document.querySelector(
-  "#update-avatar-modal"
-);
+const profileImage = document.querySelector(".profile__image");
+const profileAvatarModal = document.querySelector("#update-avatar-modal");
 const profileAvatarPeniclIcon = document.querySelector(
   ".profile__icon-edit-button"
 );
 
 //avatar form validator instance
 
-const avatarFormValidator = new FormValidator(
-  settings,
-  profileAvatarModalSelector
-);
+const avatarFormValidator = new FormValidator(settings, profileAvatarModal);
 avatarFormValidator.enableValidation();
 
 //edit avatar popup instance
 
 const editAvatarPopup = new PopupWithForm(
-  profileAvatarModalSelector,
+  profileAvatarModal,
   handleAvatarFormSubmit
 );
 editAvatarPopup.setEventListeners();
@@ -115,18 +108,19 @@ function handleAvatarFormSubmit({ url }) {
 //calling avatar popup
 
 profileAvatarPeniclIcon.addEventListener("click", () => {
+  avatarFormValidator.disableButton();
   editAvatarPopup.open();
 });
 
 //--------------------------------------------------DELETE-----------------------------------------------------------------------------------
 // new delete card const
 
-const deleteCardModalSelector = document.querySelector("#delete-confirm-modal");
+const deleteCardModal = document.querySelector("#delete-confirm-modal");
 
 // delete card popup instance
 
 const deleteImagePopup = new PopupWithConfirm(
-  deleteCardModalSelector,
+  deleteCardModal,
   handleCardDelete
 );
 deleteImagePopup.setEventListeners();
@@ -137,6 +131,7 @@ function handleCardDelete() {
   deleteImagePopup.setLoading(true);
   const id = deleteImagePopup.getId();
   api
+
     .deleteCard(id)
     .then((res) => {
       console.log(res);
@@ -149,15 +144,11 @@ function handleCardDelete() {
     .finally(() => {
       deleteImagePopup.setLoading(false, "Yes");
     });
-  deleteImagePopup.open(id);
 }
 
 //delete card validator instance
 
-const deleteCardFormValidator = new FormValidator(
-  settings,
-  deleteCardModalSelector
-);
+const deleteCardFormValidator = new FormValidator(settings, deleteCardModal);
 deleteCardFormValidator.enableValidation();
 
 //-----------------------------------------------------------------CARDS--------------------------------------------------------------------
@@ -166,7 +157,6 @@ const cardOpenPopup = new PopupWithImage(cardOpenModal);
 cardOpenPopup.setEventListeners();
 
 function createCard(data) {
-  const userId = data.userId;
   const newCard = new Card(
     data,
     userId,
@@ -199,6 +189,7 @@ function createCard(data) {
   );
   return newCard.generateCard();
 }
+
 //-----------------------------------------------------ADD------------------------------------------------------------------------------------------------------------------------------
 
 //add form validator instance
@@ -241,7 +232,7 @@ newCardPopup.setEventListeners();
 const userInfo = new UserInfo(
   profileTitleSelector,
   profileDescriptionSelector,
-  profileAvatarModalImageSelector
+  profileImage
 );
 
 // calling edit popup

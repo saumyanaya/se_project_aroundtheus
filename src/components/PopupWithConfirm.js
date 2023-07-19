@@ -16,10 +16,6 @@ export default class PopupWithConfirm extends Popup {
     }
   }
 
-  close() {
-    super.close();
-    this._popupForm.removeEventListener("submit", this._handleFormSubmit);
-  }
   setId(id) {
     this._id = id;
   }
