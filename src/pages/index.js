@@ -41,6 +41,7 @@ let cardListSection;
 Promise.all([api.getInitialCards(), api.getUserInfo()])
   .then(([initialCards, userData]) => {
     userId = userData._id;
+    console.log(userId);
     userInfo.setUserInfo(userData.name, userData.about);
     userInfo.setProfileAvatar(userData.avatar);
     cardListSection = new Section(
@@ -167,7 +168,6 @@ const cardOpenPopup = new PopupWithImage(cardOpenModal);
 cardOpenPopup.setEventListeners();
 
 function createCard(data) {
-  const userId = data.userId;
   const newCard = new Card(
     data,
     userId,
@@ -189,7 +189,6 @@ function createCard(data) {
       api
         .changeLikeCardStatus(data._id, newCard.isLiked())
         .then((res) => {
-          alert(res.likes);
           const likes = res.likes || [];
           newCard.setLikes(likes);
           newCard.toggleLikes();

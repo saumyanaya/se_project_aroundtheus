@@ -34,12 +34,45 @@
   align-items: center;
   justify-content: space-between;
 }
+.card__like-container {
+  display: flex;
+  align-items: center;
+}
 .card__like-button {
   background: transparent url(../images/heart.svg) center no-repeat;
   width: 21px;
   height: 18px;
   border: none;
 }
+.card__like-counter {
+  position: relative;
+  width: 9px;
+  height: 13px;
+  bottom: -15px;
+  right: 15px;
+  font-family: "Inter", Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: center;
+  color: #000000;
+}
+.card__number {
+  position: relative;
+  width: 9px;
+  height: 13px;
+  bottom: -15px;
+  right: 15px;
+  font-family: "Inter", Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: center;
+  color: #000000;
+}
+
 .card__delete-button {
   background: transparent url(../images/trash.svg) center no-repeat;
   position: absolute;
