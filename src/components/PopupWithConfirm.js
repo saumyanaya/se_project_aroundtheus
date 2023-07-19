@@ -16,9 +16,6 @@ export default class PopupWithConfirm extends Popup {
     }
   }
 
-  close() {
-    super.close();
-  }
   setId(id) {
     this._id = id;
   }
