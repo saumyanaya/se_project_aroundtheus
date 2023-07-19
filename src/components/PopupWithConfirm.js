@@ -6,6 +6,9 @@ export default class PopupWithConfirm extends Popup {
     this._handleFormSubmit = handleFormSubmit;
     this._popupForm = this._popupElement.querySelector(".modal__form");
   }
+  // setSubmitAction(action) {
+  //   this._handleFormSubmit = action;
+  // }
 
   setLoading(isLoading, submitSave) {
     if (isLoading) {
@@ -18,7 +21,6 @@ export default class PopupWithConfirm extends Popup {
 
   close() {
     super.close();
-    this._popupForm.removeEventListener("submit", this._handleFormSubmit);
   }
   setId(id) {
     this._id = id;

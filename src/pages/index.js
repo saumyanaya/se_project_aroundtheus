@@ -137,6 +137,7 @@ function handleCardDelete() {
   deleteImagePopup.setLoading(true);
   const id = deleteImagePopup.getId();
   api
+
     .deleteCard(id)
     .then((res) => {
       console.log(res);
@@ -188,6 +189,7 @@ function createCard(data) {
       api
         .changeLikeCardStatus(data._id, newCard.isLiked())
         .then((res) => {
+          alert(res.likes);
           const likes = res.likes || [];
           newCard.setLikes(likes);
           newCard.toggleLikes();
@@ -199,6 +201,7 @@ function createCard(data) {
   );
   return newCard.generateCard();
 }
+
 //-----------------------------------------------------ADD------------------------------------------------------------------------------------------------------------------------------
 
 //add form validator instance

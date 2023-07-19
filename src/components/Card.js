@@ -40,7 +40,7 @@ export default class Card {
     this._cardImage.src = this._link;
     this._cardImage.alt = this._name;
     this._cardTitle.textContent = this._name;
-    // this._cardElement.id = this.cardId;
+    //this._cardElement.id = this.cardId;
     this._setEventListeners();
     this.renderLikes();
     this._handleLikeClick();
