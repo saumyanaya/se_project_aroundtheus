@@ -4,7 +4,9 @@ Around The U.S.
 
 # Description/Functionality
 
-A gallery of images from around the U.S. Converts to display on various mobile screen sizes.
+By the end of this sprint, am able to:
+Apply asynchronous programming concepts in JavaScript, such as callbacks, promises, and async/await
+Interact with APIs to fetch external data and use it for additional interactivity of a web application, the role of prototypes in JavaScript and practice applying them in real-world scenarios.
 
 # Technologies/Techniques
 
