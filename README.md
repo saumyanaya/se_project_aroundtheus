@@ -1,12 +1,19 @@
-# Project name
-
+se_project_aroundtheus
 Around The U.S.
+This is the Last Javascript sprint project of the Software Engineer program at Practicum by Yandex. It was created using HTML and CSS and JavaScript based on the design brief.
 
-# Description/Functionality
+Project features
+Semantic HTML5
+Flexbox
+Transition
+Flat BEM
+Grid
+Media query(Mobile, Tablet, Desktop)
 
-Applied asynchronous programming concepts in JavaScript, such as callbacks, promises, and async/await
-Interacted with APIs to fetch external data and used it for additional interactivity of a web application, the role of prototypes in JavaScript and practiced applying them in real-world scenarios.
+Link- https://saumyanaya.github.io/se_project_aroundtheus/
 
-# Github Pages
+JavaScript
+Plan on improving the project
+The purpose of this project is to create a responsive website that functions properly on mobile devices, tablets and a standard desktop or laptop computer. The webiste was developed using a grid and flexbox. The website is design to allow for users to share pictures of their favorite destinations around the United States, while allowing other users to like and comment on these pictures.
 
-https://saumyanaya.github.io/se_project_aroundtheus/
+PracticumUSA
